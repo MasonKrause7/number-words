@@ -1,6 +1,6 @@
 namespace NumberWords.Api.Models;
 
-public class NumberToWordConversionService
+public class NumberWordsConversionService
 {
     private static readonly string[] Ones = 
     [

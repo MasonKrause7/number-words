@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Adds the conversion service to the container
-builder.Services.AddSingleton<NumberToWordConversionService>();
+builder.Services.AddSingleton<NumberWordsConversionService>();
 
 var app = builder.Build();
 
