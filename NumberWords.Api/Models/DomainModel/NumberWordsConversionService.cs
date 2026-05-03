@@ -22,15 +22,20 @@ public class NumberWordsConversionService
         "", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion"
     ];
 
-    public string[] ConvertNumbersToWords(long[] numbers)
+    public NumberWordItem[] ConvertNumbersToWords(long[] numbers)
     {
-        var words = new string[numbers.Length];
+        var numItems = numbers.Length;
+        var items = new NumberWordItem[numItems];
 
-        for (int i = 0; i < numbers.Length; i++)
+        for (int i = 0; i < numItems; i++)
         {
-            words[i] = ConvertNumberToWord(numbers[i]);
+            var number = numbers[i];
+            var word = ConvertNumberToWord(number);
+            bool isOver9000 = number > 9000;
+            items[i] = new NumberWordItem(number, word, isOver9000);
+
         }
-        return words;
+        return items;
     }
 
     /// <summary>

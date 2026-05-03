@@ -21,7 +21,7 @@ public class NumberWordsControllerTests
         OkObjectResult okResult = Assert.IsType<OkObjectResult>(actionResult);
         NumberWordsResponse response = Assert.IsType<NumberWordsResponse>(okResult.Value);
 
-        string[] expected =
+        string[] expectedWords =
         [
             "Eight Thousand Nine Hundred Ninety Nine",
             "Eleven",
@@ -31,6 +31,6 @@ public class NumberWordsControllerTests
             "Two"
         ];
 
-        Assert.Equal(expected, response.NumberWords);
+        Assert.Equal(expectedWords, response.NumberWordItems.Select(x => x.Word).ToArray());
     }
 }
