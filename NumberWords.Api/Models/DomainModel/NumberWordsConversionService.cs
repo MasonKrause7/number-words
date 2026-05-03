@@ -34,13 +34,18 @@ public class NumberWordsConversionService
     }
 
     /// <summary>
-    /// Converts numbers up/down to long.MaxValue/long.MinValue.
+    /// Converts numbers within bounds of (Long.MinValue, Long.MaxValue)
     /// Handles conversion in chunks of 3 digits, or `Magnitudes`.
     /// There are two components to conversion:
     /// 1. Convert 3 digits, values 0-999
     /// 2. Append the `magnitude`
     /// Then move to the next chunk until all digits are processed
     /// Then join the `parts` of the string into the `result`
+    /// 
+    /// Ex: 
+    ///        187 --> One Hundred Eighty Seven
+    ///     187000 --> One Hundred Eighty Seven Thousand
+    ///  187000000 --> One Hundred Eighty Seven Million
     /// </summary>
     private string ConvertNumberToWord(long number)
     {

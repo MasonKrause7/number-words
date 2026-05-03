@@ -7,17 +7,18 @@ namespace NumberWords.Api.Controllers;
 [Route("api/[controller]")] //NumberWords -> /api/numberwords
 public class NumberWordsController : ControllerBase 
 {
-    private readonly NumberToWordConversionService _numberToWordConversionService;
+    private readonly NumberWordsConversionService _numberWordsConversionService;
     // dependency injection
-    public NumberWordsController(NumberToWordConversionService numberToWordConversionService)
+    public NumberWordsController(NumberWordsConversionService numberWordsConversionService)
     {
-        _numberToWordConversionService = numberToWordConversionService;
+        _numberWordsConversionService = numberWordsConversionService;
     }
 
     [HttpPost]
     public IActionResult Post([FromBody] NumberWordsRequest request)
     {
-        string[] words = _numberToWordConversionService.ConvertNumbersToWords(request.Numbers);
+        string[] words = _numberWordsConversionService.ConvertNumbersToWords(request.Numbers);
+        words.Sort();
         return Ok(new NumberWordsResponse { NumberWords = words });
     }
 }
