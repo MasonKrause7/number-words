@@ -19,11 +19,13 @@
     * `/DomainModel` - contains business logic. currently contains a `/Service` directory, but could hold constants, enums, etc that are specific to the business domain
     * `/RequestDtos` - models of Requests bodies for clear API contract. Using DataAnnotation to validate on Dtos following [official documentation](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.dataannotations?view=net-10.0)
     * `/ResponseDtos` - models of Response bodies for clear API contract.
-
+* Frontend Implementation
+  * created frontend scaffolding in monorepo using vite: `npm create vite@latest frontend -- --template react-ts`, removed example code
+  * 
 
 
 ## What I Used AI to do 
-* Got me spun up on C# and the .NET framework. Gave me similarities/differences between C# and Java, and showed me a few examples of minimal C# applications so I could understand project structure and basic OOP principles (how to extend a class, implement an interface, etc)
+* Got me spun up on C# and the .NET framework. Gave me similarities/differences between C# and Java, and showed me a few examples of minimal C# applications so I could understand project structure and basic syntax.
 * Helped me understand `dotnet` SDK and available templates. Provided cli commands to create the solution and Api project using the `dotnet new webapi` template. 
 * Scanned the boilerplate and example code generated in the template and explained the main components.
 
