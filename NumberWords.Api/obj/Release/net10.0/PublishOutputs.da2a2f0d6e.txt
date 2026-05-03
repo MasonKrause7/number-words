@@ -1,9 +1,0 @@
-/Users/mason/workplace/maisa-interview/NumberWords.Api/publish/NumberWords.Api
-/Users/mason/workplace/maisa-interview/NumberWords.Api/publish/appsettings.Development.json
-/Users/mason/workplace/maisa-interview/NumberWords.Api/publish/appsettings.json
-/Users/mason/workplace/maisa-interview/NumberWords.Api/publish/NumberWords.Api.dll
-/Users/mason/workplace/maisa-interview/NumberWords.Api/publish/NumberWords.Api.deps.json
-/Users/mason/workplace/maisa-interview/NumberWords.Api/publish/NumberWords.Api.runtimeconfig.json
-/Users/mason/workplace/maisa-interview/NumberWords.Api/publish/NumberWords.Api.pdb
-/Users/mason/workplace/maisa-interview/NumberWords.Api/publish/Microsoft.AspNetCore.OpenApi.dll
-/Users/mason/workplace/maisa-interview/NumberWords.Api/publish/Microsoft.OpenApi.dll
