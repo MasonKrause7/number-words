@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using NumberWords.Api.Models;
-using NumberWords.Api.Services;
 
 namespace NumberWords.Api.Controllers;
 
@@ -9,17 +8,17 @@ namespace NumberWords.Api.Controllers;
 public class NumberWordsController : ControllerBase 
 {
     private readonly NumberToWordConversionService _numberToWordConversionService;
-    // service injection
+    // dependency injection
     public NumberWordsController(NumberToWordConversionService numberToWordConversionService)
     {
         _numberToWordConversionService = numberToWordConversionService;
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody] FormatNumbersAsWordsRequest request)
+    public IActionResult Post([FromBody] NumberWordsRequest request)
     {
         string[] words = _numberToWordConversionService.ConvertNumbersToWords(request.Numbers);
-        return Ok(new FormatNumbersAsWordsResponse { NumberWords = words });
+        return Ok(new NumberWordsResponse { NumberWords = words });
     }
 }
 

@@ -1,4 +1,4 @@
-namespace NumberWords.Api.Services;
+namespace NumberWords.Api.Models;
 
 public class NumberToWordConversionService
 {
@@ -28,12 +28,20 @@ public class NumberToWordConversionService
 
         for (int i = 0; i < numbers.Length; i++)
         {
-            // implicit cast to long to avoid overflow
             words[i] = ConvertNumberToWord(numbers[i]);
         }
         return words;
     }
 
+    /// <summary>
+    /// Converts numbers up/down to long.MaxValue/long.MinValue.
+    /// Handles conversion in chunks of 3 digits, or `Magnitudes`.
+    /// There are two components to conversion:
+    /// 1. Convert 3 digits, values 0-999
+    /// 2. Append the `magnitude`
+    /// Then move to the next chunk until all digits are processed
+    /// Then join the `parts` of the string into the `result`
+    /// </summary>
     private string ConvertNumberToWord(long number)
     {
         if (number == 0) return "Zero";
@@ -44,6 +52,7 @@ public class NumberToWordConversionService
         var parts = new List<string>();
         int magIndex = 0;
 
+        // iterate over chunks of 3 digits (a magnitude) at a time
         while (number > 0)
         {
             int chunk = (int)(number % 1000);

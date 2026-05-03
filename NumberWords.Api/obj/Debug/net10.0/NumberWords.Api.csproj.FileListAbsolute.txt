@@ -31,3 +31,10 @@
 /Users/mason/workplace/maisa-interview/NumberWords.Api/obj/Debug/net10.0/NumberWords.Api.pdb
 /Users/mason/workplace/maisa-interview/NumberWords.Api/obj/Debug/net10.0/NumberWords.Api.genruntimeconfig.cache
 /Users/mason/workplace/maisa-interview/NumberWords.Api/obj/Debug/net10.0/ref/NumberWords.Api.dll
+/Users/mason/workplace/maisa-interview/NumberWords.Api/obj/Debug/net10.0/NumberWords.Api.sourcelink.json
+/Users/mason/workplace/maisa-interview/NumberWords.Api/bin/Debug/net10.0/publish/web.config
+/Users/mason/workplace/maisa-interview/NumberWords.Api/bin/Debug/net10.0/publish/appsettings.Development.json
+/Users/mason/workplace/maisa-interview/NumberWords.Api/bin/Debug/net10.0/publish/appsettings.json
+/Users/mason/workplace/maisa-interview/NumberWords.Api/bin/Debug/net10.0/publish/NumberWords.Api.deps.json
+/Users/mason/workplace/maisa-interview/NumberWords.Api/bin/Debug/net10.0/publish/NumberWords.Api.runtimeconfig.json
+/Users/mason/workplace/maisa-interview/NumberWords.Api/bin/Debug/net10.0/publish/NumberWords.Api.staticwebassets.endpoints.json

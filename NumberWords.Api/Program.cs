@@ -1,23 +1,12 @@
-using NumberWords.Api.Services;
+using NumberWords.Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddOpenApi();
 builder.Services.AddControllers();
-// Adds the conversion service to the container - scoped means a new instance per HTTP request.
+// Adds the conversion service to the container
 builder.Services.AddSingleton<NumberToWordConversionService>();
 
-
 var app = builder.Build();
-
-
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
-app.UseHttpsRedirection();
 
 app.MapControllers();
 
