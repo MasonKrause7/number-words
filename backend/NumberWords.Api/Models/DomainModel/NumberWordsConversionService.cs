@@ -39,7 +39,7 @@ public class NumberWordsConversionService
     }
 
     /// <summary>
-    /// Converts numbers within bounds of (Long.MinValue, Long.MaxValue)
+    /// Converts numbers within bounds of [Long.MinValue, Long.MaxValue]
     /// Handles conversion in chunks of 3 digits, or `Magnitudes`.
     /// There are two components to conversion:
     /// 1. Convert 3 digits, values 0-999
@@ -59,7 +59,7 @@ public class NumberWordsConversionService
         bool isNegative = number < 0;
 
         // Math.Abs(long.MinValue) overflows because |long.MinValue| > long.MaxValue.
-        // Work with a ulong to safely represent the absolute value.
+        // ulong can safely represent the absolute value.
         ulong absolute = number == long.MinValue
             ? (ulong)long.MaxValue + 1
             : (ulong)Math.Abs(number);
