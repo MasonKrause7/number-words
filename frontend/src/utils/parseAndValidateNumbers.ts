@@ -1,0 +1,56 @@
+import type { ParseResult } from '../types/numberWords';
+
+const LONG_MIN = BigInt("-9223372036854775807");
+const LONG_MAX = BigInt("9223372036854775807");
+const MAX_LIST_LENGTH = 1000;
+
+const VALID_INPUT_HINT = "Please enter whole numbers separated by commas (e.g. 42, 187, -5, 9001).";
+
+export function parseAndValidateNumbers(raw: string): ParseResult {
+    const errors: string[] = [];
+    const trimmed = raw.trim();
+
+    if (trimmed.length === 0) {
+        return { ok: false, errors: [`Please enter at least one number. ${VALID_INPUT_HINT}`] };
+    }
+
+    const parts = trimmed.split(",");
+
+    if (parts.length > MAX_LIST_LENGTH) {
+        errors.push(`Too many values — the maximum is ${MAX_LIST_LENGTH} numbers per request.`);
+    }
+
+    const normalized: string[] = [];
+
+    parts.forEach((part, index) => {
+        const token = part.trim();
+        const itemNumber = index + 1;
+
+        if (token.length === 0) {
+            errors.push(`It looks like there's an extra comma near position #${itemNumber}. ${VALID_INPUT_HINT}`);
+            return;
+        }
+
+        if (!/^-?\d+$/.test(token)) {
+            errors.push(`"${token}" (position #${itemNumber}) isn't a valid whole number. ${VALID_INPUT_HINT}`);
+            return;
+        }
+
+        let asBigInt: bigint;
+        try {
+            asBigInt = BigInt(token);
+        } catch {
+            errors.push(`"${token}" (position #${itemNumber}) isn't a valid whole number. ${VALID_INPUT_HINT}`);
+            return;
+        }
+
+        if (asBigInt < LONG_MIN || asBigInt > LONG_MAX) {
+            errors.push(`"${token}" (position #${itemNumber}) is too large or too small. Numbers must be between −9,223,372,036,854,775,807 and 9,223,372,036,854,775,807. ${VALID_INPUT_HINT}`);
+            return;
+        }
+
+        normalized.push(asBigInt.toString());
+    });
+
+    return errors.length > 0 ? { ok: false, errors } : { ok: true, values: normalized };
+}

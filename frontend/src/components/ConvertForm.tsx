@@ -1,0 +1,31 @@
+interface ConvertFormProps {
+    value: string;
+    onChange: (value: string) => void;
+    onSubmit: () => void;
+}
+
+function ConvertForm({ value, onChange, onSubmit }: ConvertFormProps) {
+    return (
+        <form
+            className="convert-form"
+            onSubmit={(event) => {
+                event.preventDefault();
+                onSubmit();
+            }}
+        >
+            <label htmlFor="number-words-input">Enter your numbers</label>
+            <div className="input-row">
+                <input
+                    id="number-words-input"
+                    type="text"
+                    placeholder="e.g. 42, 187, -5, 9001"
+                    value={value}
+                    onChange={(e) => onChange(e.target.value)}
+                />
+                <button type="submit">Convert</button>
+            </div>
+        </form>
+    );
+}
+
+export default ConvertForm;
