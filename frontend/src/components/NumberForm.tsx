@@ -7,7 +7,7 @@ interface NumberFormProps {
 function NumberForm({ value, onChange, onSubmit }: NumberFormProps) {
     return (
         <form
-            className="convert-form"
+            className="number-form"
             onSubmit={(event) => {
                 event.preventDefault();
                 onSubmit();

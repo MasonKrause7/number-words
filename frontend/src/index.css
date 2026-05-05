@@ -64,7 +64,7 @@ body {
 }
 
 /* Form */
-.convert-form {
+.number-form {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -73,7 +73,7 @@ body {
   margin-bottom: 1.5rem;
 }
 
-.convert-form label {
+.number-form label {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
@@ -86,7 +86,7 @@ body {
   gap: 0.75rem;
 }
 
-.convert-form input[type="text"] {
+.number-form input[type="text"] {
   flex: 1;
   padding: 0.65rem 0.85rem;
   font-size: 0.95rem;
@@ -97,12 +97,12 @@ body {
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
-.convert-form input[type="text"]:focus {
+.number-form input[type="text"]:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-subtle);
 }
 
-.convert-form button {
+.number-form button {
   padding: 0.65rem 1.25rem;
   font-size: 0.9rem;
   font-weight: 600;
@@ -115,11 +115,11 @@ body {
   transition: background 0.15s, transform 0.1s;
 }
 
-.convert-form button:hover {
+.number-form button:hover {
   background: var(--accent-hover);
 }
 
-.convert-form button:active {
+.number-form button:active {
   transform: scale(0.97);
 }
 

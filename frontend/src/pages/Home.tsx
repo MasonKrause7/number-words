@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { NumberWordsResponse } from '../types/numberWords';
+import type { NumberWordsResponse, ParseResult } from '../types/numberWords';
 import { parseAndValidateNumbers } from '../utils/parseAndValidateNumbers';
 import { convertNumbers } from '../services/numberWordsApiClient';
 import NumberForm from '../components/NumberForm';
@@ -21,7 +21,7 @@ function Home() {
     };
 
     const handleSubmit = async () => {
-        const result = parseAndValidateNumbers(inputValue);
+        const result: ParseResult = parseAndValidateNumbers(inputValue);
         if (result.ok === false) {
             setErrors(result.errors);
             return;
