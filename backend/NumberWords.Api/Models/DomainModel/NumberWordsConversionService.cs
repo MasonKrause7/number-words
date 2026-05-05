@@ -22,7 +22,7 @@ public class NumberWordsConversionService
         "", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion"
     ];
 
-    public NumberWordItem[] ConvertNumbersToWords(long[] numbers)
+    public NumberWordItem[] ConvertNumbersToWordItems(long[] numbers)
     {
         var numItems = numbers.Length;
         var items = new NumberWordItem[numItems];

@@ -7,11 +7,11 @@ public class NumberWordsConversionServiceTests
     private readonly NumberWordsConversionService _service = new();
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputIsZero_ReturnsZero()
+    public void ConvertNumbersToWordItems_WhenInputIsZero_ReturnsZero()
     {
         long[] input = [0];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.Single(result);
         Assert.Equal("Zero", result[0].Word);
@@ -20,11 +20,11 @@ public class NumberWordsConversionServiceTests
     }
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputIsNegative_PrefixesNegative()
+    public void ConvertNumbersToWordItems_WhenInputIsNegative_PrefixesNegative()
     {
         long[] input = [-42];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.Single(result);
         Assert.Equal("Negative Forty Two", result[0].Word);
@@ -33,11 +33,11 @@ public class NumberWordsConversionServiceTests
     }
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputIsOnes_ReturnsExpectedWords()
+    public void ConvertNumbersToWordItems_WhenInputIsOnes_ReturnsExpectedWords()
     {
         long[] input = [7];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.Single(result);
         Assert.Equal("Seven", result[0].Word);
@@ -46,11 +46,11 @@ public class NumberWordsConversionServiceTests
     }
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputIsTeens_ReturnsExpectedWords()
+    public void ConvertNumbersToWordItems_WhenInputIsTeens_ReturnsExpectedWords()
     {
         long[] input = [13];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.Single(result);
         Assert.Equal("Thirteen", result[0].Word);
@@ -59,11 +59,11 @@ public class NumberWordsConversionServiceTests
     }
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputIsTens_ReturnsExpectedWords()
+    public void ConvertNumbersToWordItems_WhenInputIsTens_ReturnsExpectedWords()
     {
         long[] input = [40];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.Single(result);
         Assert.Equal("Forty", result[0].Word);
@@ -72,11 +72,11 @@ public class NumberWordsConversionServiceTests
     }
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputIsTensAndOnes_ReturnsExpectedWords()
+    public void ConvertNumbersToWordItems_WhenInputIsTensAndOnes_ReturnsExpectedWords()
     {
         long[] input = [42];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.Single(result);
         Assert.Equal("Forty Two", result[0].Word);
@@ -85,11 +85,11 @@ public class NumberWordsConversionServiceTests
     }
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputIsHundredsOnly_ReturnsExpectedWords()
+    public void ConvertNumbersToWordItems_WhenInputIsHundredsOnly_ReturnsExpectedWords()
     {
         long[] input = [300];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.Single(result);
         Assert.Equal("Three Hundred", result[0].Word);
@@ -98,11 +98,11 @@ public class NumberWordsConversionServiceTests
     }
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputIsHundredsWithRemainder_ReturnsExpectedWords()
+    public void ConvertNumbersToWordItems_WhenInputIsHundredsWithRemainder_ReturnsExpectedWords()
     {
         long[] input = [305];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.Single(result);
         Assert.Equal("Three Hundred Five", result[0].Word);
@@ -111,11 +111,11 @@ public class NumberWordsConversionServiceTests
     }
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputIncludesThousands_ReturnsExpectedWords()
+    public void ConvertNumbersToWordItems_WhenInputIncludesThousands_ReturnsExpectedWords()
     {
         long[] input = [8999];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.Single(result);
         Assert.Equal("Eight Thousand Nine Hundred Ninety Nine", result[0].Word);
@@ -124,11 +124,11 @@ public class NumberWordsConversionServiceTests
     }
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputHasMultipleValues_PreservesInputOrder()
+    public void ConvertNumbersToWordItems_WhenInputHasMultipleValues_PreservesInputOrder()
     {
         long[] input = [2, 11, 1, -16];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.Equal(4, result.Length);
         Assert.Equal(2, result[0].OriginalNumber);
@@ -149,11 +149,11 @@ public class NumberWordsConversionServiceTests
     }
 
     [Fact]
-    public void ConvertNumbersToWords_WhenInputIsGreaterThan9000_SetsOver9000Flag()
+    public void ConvertNumbersToWordItems_WhenInputIsGreaterThan9000_SetsOver9000Flag()
     {
         long[] input = [9000, 9001];
 
-        NumberWordItem[] result = _service.ConvertNumbersToWords(input);
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
 
         Assert.False(result[0].IsOver9000);
         Assert.True(result[1].IsOver9000);

@@ -17,7 +17,7 @@ public class NumberWordsController : ControllerBase
     [HttpPost]
     public IActionResult Post([FromBody] NumberWordsRequest request)
     {
-        NumberWordItem[] items = _numberWordsConversionService.ConvertNumbersToWords(request.Numbers);
+        NumberWordItem[] items = _numberWordsConversionService.ConvertNumbersToWordItems(request.Numbers);
         Array.Sort(items, (a, b) => string.Compare(a.Word, b.Word, StringComparison.OrdinalIgnoreCase));
         return Ok(new NumberWordsResponse { NumberWordItems = items });
     }

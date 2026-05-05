@@ -1,10 +1,10 @@
-interface ConvertFormProps {
+interface NumberFormProps {
     value: string;
     onChange: (value: string) => void;
     onSubmit: () => void;
 }
 
-function ConvertForm({ value, onChange, onSubmit }: ConvertFormProps) {
+function NumberForm({ value, onChange, onSubmit }: NumberFormProps) {
     return (
         <form
             className="convert-form"
@@ -28,4 +28,4 @@ function ConvertForm({ value, onChange, onSubmit }: ConvertFormProps) {
     );
 }
 
-export default ConvertForm;
+export default NumberForm;

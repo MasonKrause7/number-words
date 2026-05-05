@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { NumberWordsResponse } from '../types/numberWords';
 import { parseAndValidateNumbers } from '../utils/parseAndValidateNumbers';
 import { convertNumbers } from '../services/numberWordsApi';
-import ConvertForm from '../components/ConvertForm';
+import NumberForm from '../components/NumberForm';
 import ErrorList from '../components/ErrorList';
 import ResultsList from '../components/ResultsList';
 
@@ -52,7 +52,7 @@ function Home() {
                 <p>Enter a comma-separated list of integers to convert them to English words, <strong>sorted alphabetically</strong>.</p>
             </header>
 
-            <ConvertForm
+            <NumberForm
                 value={inputValue}
                 onChange={handleInputChange}
                 onSubmit={() => void handleSubmit()}
