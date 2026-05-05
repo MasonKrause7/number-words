@@ -22,7 +22,7 @@ function Home() {
 
     const handleSubmit = async () => {
         const result = parseAndValidateNumbers(inputValue);
-        if (!result.ok) {
+        if (result.ok === false) {
             setErrors(result.errors);
             return;
         }
