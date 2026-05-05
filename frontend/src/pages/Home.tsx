@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { NumberWordsResponse } from '../types/numberWords';
 import { parseAndValidateNumbers } from '../utils/parseAndValidateNumbers';
-import { convertNumbers } from '../services/numberWordsApi';
+import { convertNumbers } from '../services/numberWordsApiClient';
 import NumberForm from '../components/NumberForm';
 import ErrorList from '../components/ErrorList';
 import ResultsList from '../components/ResultsList';

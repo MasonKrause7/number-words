@@ -20,11 +20,14 @@
     * `/ResponseDtos` - models of Response bodies for clear API contract.
 * Frontend Implementation
   * created frontend scaffolding in monorepo using vite: `npm create vite@latest frontend -- --template react-ts`, removed example code
-  * 
+  
 
 
-## What I Used AI to do 
-* Got me spun up on C# and the .NET framework. Gave me similarities/differences between C# and Java, and showed me a few examples of minimal C# applications so I could understand project structure and basic syntax.
-* Helped me understand `dotnet` SDK and available templates. Provided cli commands to create the solution and Api project using the `dotnet new webapi` template. 
-* Scanned the boilerplate and example code generated in the template and explained the main components.
+
+## Edge Case: Int64.MinValue Overflow (AI-Assisted Discovery)
+
+While testing boundary values, I sent `−9223372036854775808` (`Int64.MinValue`) through the app and the server crashed. Working with AI, we identified a two-layer bug:
+
+1. **Backend**: `Math.Abs(long.MinValue)` overflows because its absolute value exceeds `long.MaxValue`. Fixed by converting to `ulong` before processing.
+2. **Frontend serialization**: `values.map(Number)` silently lost precision for 64-bit integers (JS doubles only have 53 bits of integer precision). Fixed by building the JSON body as a raw string so numeric literals hit the wire without JavaScript float conversion.
 

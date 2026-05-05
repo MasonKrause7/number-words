@@ -57,15 +57,20 @@ public class NumberWordsConversionService
         if (number == 0) return "Zero";
 
         bool isNegative = number < 0;
-        number = Math.Abs(number);
+
+        // Math.Abs(long.MinValue) overflows because |long.MinValue| > long.MaxValue.
+        // Work with a ulong to safely represent the absolute value.
+        ulong absolute = number == long.MinValue
+            ? (ulong)long.MaxValue + 1
+            : (ulong)Math.Abs(number);
 
         var parts = new List<string>();
         int magIndex = 0;
 
         // iterate over chunks of 3 digits (a magnitude) at a time
-        while (number > 0)
+        while (absolute > 0)
         {
-            int chunk = (int)(number % 1000);
+            int chunk = (int)(absolute % 1000);
 
             if (chunk > 0)
             {
@@ -78,7 +83,7 @@ public class NumberWordsConversionService
                 parts.Insert(0, chunkWords);
             }
 
-            number /= 1000;
+            absolute /= 1000;
             magIndex++;
         }
 

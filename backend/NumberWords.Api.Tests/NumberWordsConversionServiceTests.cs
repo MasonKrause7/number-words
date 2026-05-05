@@ -159,4 +159,41 @@ public class NumberWordsConversionServiceTests
         Assert.True(result[1].IsOver9000);
     }
 
+    [Fact]
+    public void ConvertNumbersToWordItems_WhenInputIsLongMinValue_ReturnsExpectedWords()
+    {
+        long[] input = [long.MinValue];
+
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
+
+        Assert.Single(result);
+        Assert.Equal("Negative Nine Quintillion Two Hundred Twenty Three Quadrillion Three Hundred Seventy Two Trillion Thirty Six Billion Eight Hundred Fifty Four Million Seven Hundred Seventy Five Thousand Eight Hundred Eight", result[0].Word);
+        Assert.Equal(long.MinValue, result[0].OriginalNumber);
+        Assert.True(result[0].IsOver9000);
+    }
+
+    [Fact]
+    public void ConvertNumbersToWordItems_WhenInputIsLongMaxValue_ReturnsExpectedWords()
+    {
+        long[] input = [long.MaxValue];
+
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
+
+        Assert.Single(result);
+        Assert.Equal("Nine Quintillion Two Hundred Twenty Three Quadrillion Three Hundred Seventy Two Trillion Thirty Six Billion Eight Hundred Fifty Four Million Seven Hundred Seventy Five Thousand Eight Hundred Seven", result[0].Word);
+        Assert.Equal(long.MaxValue, result[0].OriginalNumber);
+        Assert.True(result[0].IsOver9000);
+    }
+
+    [Fact]
+    public void ConvertNumbersToWordItems_WhenInputIsNegativeLessThanNeg9000_SetsOver9000Flag()
+    {
+        long[] input = [-9000, -9001];
+
+        NumberWordItem[] result = _service.ConvertNumbersToWordItems(input);
+
+        Assert.False(result[0].IsOver9000);
+        Assert.True(result[1].IsOver9000);
+    }
+
 }

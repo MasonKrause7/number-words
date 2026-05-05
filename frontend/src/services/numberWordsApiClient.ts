@@ -1,14 +1,15 @@
-import type { NumberWordsRequest, NumberWordsResponse } from '../types/numberWords';
+import type { NumberWordsResponse } from '../types/numberWords';
 
 const API_URL = "http://localhost:5273/api/numberwords";
 
 export async function convertNumbers(values: string[]): Promise<NumberWordsResponse> {
-    const request: NumberWordsRequest = { numbers: values.map(Number) };
+    // Build JSON manually to avoid JavaScript Number precision loss for Int64 values.
+    const body = `{"numbers":[${values.join(",")}]}`;
 
     const response = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(request),
+        body,
     });
 
     if (!response.ok) {
