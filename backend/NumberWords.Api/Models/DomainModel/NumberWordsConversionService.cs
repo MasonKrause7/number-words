@@ -31,7 +31,7 @@ public class NumberWordsConversionService
         {
             var number = numbers[i];
             var word = ConvertNumberToWord(number);
-            bool isOver9000 = number > 9000;
+            bool isOver9000 = number > 9000 || number < -9000;
             items[i] = new NumberWordItem(number, word, isOver9000);
 
         }
