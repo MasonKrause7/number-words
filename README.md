@@ -126,6 +126,6 @@ Results are sorted alphabetically by the `word` field.
 ## Architecture Notes
 
 - **Backend** follows a Controller → Service pattern with dependency injection.
-- **Frontend** keeps feature logic (state, validation, API calls) in page components. The `components/` directory is reserved for shared, reusable UI pieces.
-- **Validation** is duplicated on both sides — the backend uses DataAnnotations on request DTOs; the frontend validates before sending requests.
+- **Frontend** keeps well structured components with pure functionality encapsulated in utilities.
+- **Validation** is handled on both sides — the backend uses DataAnnotations on request DTOs; the frontend validates before sending requests.
 - **CORS** is configured in the backend to allow requests from `http://localhost:5173` during development.
