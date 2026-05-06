@@ -1,8 +1,10 @@
 import type { NumberWordsResponse } from '../types/numberWords';
 
-const API_URL = "http://localhost:5273/api/numberwords";
+const BASE_API_URL = "http://localhost:5273/";
+const NUMBER_WORDS_URL = "api/numberwords";
 
 export async function convertNumbers(values: string[]): Promise<NumberWordsResponse> {
+    const API_URL = `${BASE_API_URL}${NUMBER_WORDS_URL}`;
     // Build JSON manually to avoid JavaScript Number precision loss for Int64 values.
     const body = `{"numbers":[${values.join(",")}]}`;
 
