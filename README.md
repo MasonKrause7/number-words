@@ -66,13 +66,6 @@ cd backend
 dotnet test
 ```
 
-To run a specific test class:
-
-```bash
-cd backend
-dotnet test --filter "FullyQualifiedName~NumberWordsConversionServiceTests"
-```
-
 ## API Reference
 
 ### `POST /api/numberwords`
